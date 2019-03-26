@@ -1,13 +1,15 @@
-
+package search_for_light;
 import java.util.Scanner;
 
 import edu.cmu.ri.createlab.terk.robot.finch.Finch;
 import java.util.ArrayList;
-public class FinchLight {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class T1_main {
 	private static Finch myFinch = null;
 	
 	public static int MaxLightSensor;
-	static ArrayList<Long>TStart = new ArrayList<Long>();
+	static ArrayList<Long>TStart = new ArrayList<Long>();//
 	public static int LeftLightSensor;
 	public static int RightLightSensor;
 	public static int MinLightSensor;
@@ -26,7 +28,11 @@ public class FinchLight {
 		myFinch = new Finch();
 
 		MinLightSensor = getMinLightSensor();
-		finchstart();
+            try {
+                finchstart();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(T1_main.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		
 	}
 	public static int getRightLightSensor() {
